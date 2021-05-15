@@ -1,0 +1,35 @@
+<view class="category">
+  <!-- 搜索框 -->
+  <Searchinput></Searchinput>
+  <!-- 展示内容 -->
+  <view class="category_container">
+    <!-- 左侧侧边栏 -->
+    <scroll-view scroll-y class="container_left">
+      <!-- {{index===currentIndex?'active':'' }}动态绑定class，只有当遍历的索引等于设定好的currentIndex才添加类 -->
+      <view class="container_left_item {{index===currentIndex?'active':'' }}" wx:for="{{leftlist}}" wx:key="*this" bindtap="leftitemclick" data-index="{{index}}">
+        {{item}}
+      </view>
+    </scroll-view>
+    <!-- 右侧内容展示 -->
+    <scroll-view scroll-top="{{scrolltop}}" scroll-y class="container_right">
+      <view class="container_right_item" wx:for="{{rightlist}}" wx:for-item="item1" wx:for-index="index1" wx:key="cat_id">
+        <!-- 右侧分类标题 -->
+        <view class="goods_title">
+          <text class="delimiter">/</text>
+          <text class="title">{{item1.cat_name}}</text>
+          <text class="delimiter">/</text>
+        </view>
+        <!-- 右侧分类列表数据 -->
+        <view class="goods_list">
+          <!-- 点击跳转到goods_list并将商品对应的id传出去 -->
+          <navigator class="navigator" wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" wx:key="cat_id" url="/pages/goods_list/index?cid={{item2.cat_id}}">
+            <!-- 图片 -->
+            <image mode="widthFix" src="{{item2.cat_icon}}" />
+            <!-- 名称 -->
+            <view class="goods_name">{{item2.cat_name}}</view>
+          </navigator>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

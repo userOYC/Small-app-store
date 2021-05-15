@@ -1,0 +1,54 @@
+page {
+  height: 100%;
+}
+.category {
+  height: 100%;
+  .category_container {
+    // 计算可滚动高度
+    height: ~"calc(100vh - 90rpx)";
+    display: flex;
+    .container_left {
+      flex: 2;
+      .container_left_item {
+        height: 80rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30rpx;
+      }
+      // 选中的样式
+      .active {
+        color: var(--themeColor);
+        border-left: 3px solid currentColor;
+      }
+    }
+    .container_right {
+      flex: 5;
+      .container_right_item {
+        .goods_title {
+          height: 80rpx;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          .delimiter {
+            color: #ccc;
+            padding: 0 10rpx;
+          }
+        }
+        .goods_list {
+          display: flex;
+          flex-wrap: wrap;
+          .navigator {
+            width: 33.33%;
+            text-align: center;
+            image {
+              width: 50%;
+            }
+            // .goods_name {
+            // }
+          }
+        }
+      }
+    }
+  }
+}

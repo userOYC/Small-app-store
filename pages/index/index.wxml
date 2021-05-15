@@ -1,0 +1,38 @@
+<view class="pyg_index">
+  <!-- 搜索框 -->
+  <Searchinput></Searchinput>
+  <!-- 轮播图 -->
+  <view class="index_swiper">
+    <!-- 轮播图和image存在默认的样式 我们需要经过一些设置让图片能够自适应 -->
+    <swiper indicator-dots autoplay interval="3000" circular>
+      <swiper-item wx:for="{{swiperlist}}" wx:key="goods_id">
+        <navigator url="{{item.navigator_url}}">
+          <!-- mode="widthFix能让图片高度随宽度变化而变化" -->
+          <image mode="widthFix" src="{{item.image_src}}" />
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 分类导航 -->
+  <view class="index_cate">
+    <navigator class="navigator" wx:if="{{catelist.length>0}}" wx:for="{{catelist}}" open-type="switchTab" wx:key="name" url="/pages/category/index">
+      <image mode="widthFix" src="{{item.image_src}}" />
+    </navigator>
+  </view>
+  <!-- 楼层展示 -->
+  <view class="index_floor">
+    <view class="floor_group" wx:for="{{floorlist}}" wx:key="image_src" wx:for-item="item1" wx:for-index="index1">
+      <!-- 标题 -->
+      <view class="floor_title">
+        <image mode="widthFix" src="{{item1.floor_title.image_src}}" />
+      </view>
+      <!-- 内容 -->
+      <view class="floor_content">
+        <navigator class="navigator" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="image_src" url="{{item2.navigator_url}}">
+          <!-- 只有第一张需要高度随宽度变化而变化，其他图片完全拉伸宽高 -->
+          <image mode="{{index2===0?'widthFix':'scaleToFill'}}" src="{{item2.image_src}}" />
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

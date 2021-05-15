@@ -1,0 +1,3 @@
+<button type="primary" plain open-type="getUserInfo" bindtap="getUserProfile" style="margin-top:40rpx">
+  登录
+</button>
